@@ -1,0 +1,33 @@
+#!/bin/bash
+# Lance un Rsync
+#rsync --ignore-existing \
+#      --exclude={'*.jpg','*.jpeg','*.db','*.txt','@eaDir', '*.docx'} \
+#      --protect-args \
+#      --progress \
+#      -vr \
+#      --rsh='ssh -p 22' \
+#      --rsync-path=/usr/bin/rsync "admin@192.168.1.61:/volume1/DATA_REPOSITORY/Work/In Da Hood/PLAYLISTS/" "/home/perthuis/Musique/" \
+#      /
+
+#rsync --ignore-existing --exclude={'*.jpg','*.db','*.txt'} --protect-args --progress -vr --rsh='ssh -p 22' --rsync-path=/usr/bin/rsync "admin@192.168.1.61:/volume1/DATA_REPOSITORY/Work/In Da Hood/PLAYLISTS/" "/home/perthuis/Musique/"
+
+SYNC_OPTIONS=(
+    '--ignore-existing'
+    '--protect-args'
+    '--progress'
+    '-vr'
+    '--rsh="ssh -p 22"'
+    '--rsync-path=/usr/bin/rsync'
+    '-v'
+    )
+
+SYNC_EXCLUDE=(
+    --exclude='*.jpeg'
+    --exclude='*.db'
+    --exclude='*.txt'
+    --exclude='@eaDir'
+    --exclude='*.docx'
+    )
+SRC_PATH='"admin@192.168.1.61:/volume1/DATA_REPOSITORY/Work/In Da Hood/PLAYLISTS/"'
+DEST_PATH='"/home/perthuis/Musique/"'
+rsync "${SYNC_EXCLUDE[@]}" "${SYNC_OPTIONS[@]}" "${SRC_PATH}" "${DEST_PATH}"

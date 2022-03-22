@@ -1,0 +1,24 @@
+=============
+  Overview
+=============
+
+.
+├── app
+│   ├── __init__.py
+│   ├── module_1.py
+│   └── module_2.py
+│ 
+└── test
+    ├── __init__.py
+    └── test_main.py
+
+module_2 have a dependency in module_1
+
+
+=============
+    Run
+=============
+
+python -m app.module_1
+python -m app.module_2
+python -m unittest test.test_main
