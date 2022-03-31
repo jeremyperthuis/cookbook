@@ -1,35 +1,16 @@
-import pandas
-df = pandas.read_csv("csv/file_1.csv", delimiter='|', dtype = str)
+import pandas as pd
 
 
-def first_letter(row):
-    return row['first_name'].title()
+# Concat multiple columns together
+df["title"] = df[["title", "comment"]].agg(
+            " - ".join, axis=1)
 
-def replace_country_code(row):
-
-    if "FRA" in row['country_code']:
-        return "France"
-    if "CHE" in row['country_code']:
-        return "Suisse"
-
-def add_phone_indicator(row):
-    mobile_phone_str = str(row['mobile_phone'])
-    if not (mobile_phone_str == "nan"):
-        mobile_phone_str = mobile_phone_str.replace('-','')
-        mobile_phone_str = mobile_phone_str.replace(' ', '')
-
-        if (mobile_phone_str[0] == "0"):
-            mobile_phone_str = mobile_phone_str.replace('0', '+33', 1)
-
-        if (len(mobile_phone_str) == 11) and mobile_phone_str[0:2] == "33":
-            mobile_phone_str = mobile_phone_str.replace('33', '+33', 1)
-
-        return mobile_phone_str
-
-df['norm_first_name'] = df.apply(first_letter, axis=1)
-df['norm_country_code'] = df.apply(replace_country_code, axis=1)
-df['norm_mobile_phone'] = df.apply(add_phone_indicator, axis=1)
+# Sorting
 
 
-
-df.to_csv("csv/file_2.csv", sep='|')
+# display all records
+pd.set_option('display.max_rows', None)
+# Display all content in each column
+pd.set_option('display.max_colwidth', None)
+# reinitialize index
+df.reset_index(drop=True)

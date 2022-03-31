@@ -1,12 +1,12 @@
 import pandas as pd
 
-# Initialize Dataframe with a dictionnary
-d1 = [
+# Initialize Dataframe with a list of dictionnaries
+list_dict_1 = [
     {"a":1, "b":2, "c":3},
     {"a":4, "b":5, "c":6},
     {"a":7, "b":8, "c":9}]
 
-df1 = pd.DataFrame(d1)
+df1 = pd.DataFrame(dict_1)
 
 # Initialize Dataframe with nested dictionnary
 d2 = {'a' : 1, 'b': {'c':2}, 'd':{'e':{'f':3}}}
