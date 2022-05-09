@@ -1,10 +1,13 @@
 # Git
----
+
 
 #### 1. Config
 ```bash
+git config --global user.name "John Doe"
+git config --global user.email johndoe@example.com
+
 # Persist credentials
-git config credentials.helper store
+git config --global credential.helper store
 # -> Then do a push or pull, type password/token and its good.
 ```
 
