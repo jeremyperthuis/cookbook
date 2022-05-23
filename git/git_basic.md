@@ -4,7 +4,7 @@
 #### 1. Config
 ```bash
 git config --global user.name "John Doe"
-git config --global user.email johndoe@example.com
+git config --global user.email "johndoe@example.com"
 
 # Persist credentials
 git config --global credential.helper store
